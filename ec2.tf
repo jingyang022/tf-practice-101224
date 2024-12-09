@@ -1,4 +1,4 @@
-resource "aws_instance" "public" {
+resource "aws_instance" "server" {
     ami = "ami-04c913012f8977029"
     instance_type = "t2.micro"
     subnet_id = module.vpc.public_subnets[0] #Public Subnet ID, e.g. subnet-xxxxxxxxxxx
