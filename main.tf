@@ -11,6 +11,13 @@ data "aws_vpc" "selected" {
   }
 }
 
+/* data "aws_instance" "selected" {
+  filter {
+    name   = "tag:Name"
+    values = ["yap-ec2"]
+  }
+} */
+
 resource "aws_security_group" "example" {
     name_prefix = "${var.name}-sg" #Security group name, e.g. jazeel-terraform-security-group
     description = "Security group for EC2"

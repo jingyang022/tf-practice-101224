@@ -9,3 +9,7 @@ output "public_subnets" {
 output "private_subnets" {
     value = module.vpc.private_subnets
 }
+
+output "instance_az" {
+  value = aws_instance.server.availability_zone
+}
