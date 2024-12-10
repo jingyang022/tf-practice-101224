@@ -18,6 +18,28 @@ data "aws_vpc" "selected" {
   }
 } */
 
+data "aws_subnets" "public" {
+  filter{
+    name = "vpc-id"
+    values = [data.aws_vpc.selected.id]
+  }
+  filter {
+    name = "tag:Name"
+    values = ["*public-*"]
+  }
+}
+
+data "aws_subnets" "private" {
+  filter{
+    name = "vpc-id"
+    values = [data.aws_vpc.selected.id]
+  }
+  filter {
+    name = "tag:Name"
+    values = ["*private-*"]
+  }
+}
+
 resource "aws_security_group" "example" {
     name_prefix = "${var.name}-sg" #Security group name, e.g. jazeel-terraform-security-group
     description = "Security group for EC2"
